@@ -1,0 +1,75 @@
+<div class="page-login layout-full page-dark">
+  <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
+  data-animsition-out="fade-out">>
+    <div class="page-content vertical-align-middle" style="margin-top:40px">
+      <div class="brand">
+        <!-- <img class="brand-img" src="/assets/airsea_logo.png" width="110" height="105"> -->
+        <h2 class="brand-text" style="text-transform: none">Kindline</h2>
+      </div>
+      <p>Sign In</p>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, class: "form-control", required: "required",placeholder: "Email", :autocomplete => :off %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, class: "form-control", required: "required",placeholder: "Password" %>
+        </div>
+        <!-- <div class="form-group clearfix">
+          <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
+            <input type="checkbox" id="inputCheckbox" name="remember">
+            <label for="inputCheckbox">Remember me</label>
+          </div>
+          <a class="pull-right" href="forgot-password.html">Forgot password?</a>
+        </div> -->
+        <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+      <%end%>
+      <!-- <p>Still no account? Please go to <a href="register.html">Register</a></p> -->
+      <footer class="page-copyright page-copyright-inverse">
+        <p>WEBSITE BY Kindline</p>
+        <p>© <%=DateTime.now.strftime("%Y")%>. All RIGHT RESERVED.</p>
+        <!-- <div class="social">
+          <a href="javascript:void(0)">
+            <i class="icon bd-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="javascript:void(0)">
+            <i class="icon bd-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="javascript:void(0)">
+            <i class="icon bd-dribbble" aria-hidden="true"></i>
+          </a>
+        </div> -->
+      </footer>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <h2>Log in</h2>
+
+<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%#= f.label :email %><br />
+    <%#= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :password %><br />
+    <%#= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <%# if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%#= f.check_box :remember_me %>
+      <%#= f.label :remember_me %>
+    </div>
+  <%# end -%>
+
+  <div class="actions">
+    <%#= f.submit "Log in" %>
+  </div>
+<%# end %>
+
+<%#= render "devise/shared/links" %> -->

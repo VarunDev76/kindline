@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kindline</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/assets/breakpoints.js"></script>
+  <script>
+  Breakpoints();
+  </script>
+</head>
+<body>
+
+    <%if user_signed_in?%>
+      <%= render "layouts/navbar" %>
+      <%= render "layouts/sidebar" %>
+
+      <div class="page">
+        <%= render "layouts/flash_messages" %>
+      
+        <%= yield %>
+      </div>
+
+    <%else%>
+      <%= render "layouts/flash_messages" %>
+      <%= yield %>
+    <%end%>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      setTimeout(function(){
+        $('#alert, #notice ').slideUp()
+      }, 3000);
+    })
+  </script>
+
+  <script src="/assets/jquery.js"></script>
+  <script src="/assets/bootstrap.js"></script>
+  <script src="/assets/jquery.asScrollable.all.js"></script>
+  <script src="/assets/jquery-asHoverScroll.js"></script>
+  <!-- Scripts -->
+  <script src="/assets/core.js"></script>
+  <script src="/assets/site.js"></script>
+  <script src="/assets/sections/menu.js"></script>
+  <script src="/assets/sections/menubar.js"></script>
+
+  <script type="text/javascript">
+  	$(document).ready(function($) {
+	    Site.run();
+	  });
+  </script>
+</body>
+</html>
