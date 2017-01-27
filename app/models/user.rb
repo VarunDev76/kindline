@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
         user.valid_password?(password) ? user : nil
     end
 
-    def generate_token()
+    def generate_token
         token = SecureRandom.urlsafe_base64
         self.update_attributes(auth_token: token)
     end

@@ -4,10 +4,10 @@ class Api::UsersController < Api::BaseController
 	def login
 		user = User.authenticate(params[:user][:email], params[:user][:password])
 		if user.blank?
-			render :json => {data: user, status: 1, message: "No user found."}
+			render :json => {data: user, status: 0, message: "No user found."}
 		else
 			user.generate_token
-			render :json => {data: user, status: 0, message: "Login Successfull."}
+			render :json => {data: user, status: 1, message: "Login Successfull."}
 		end
 	end
 
