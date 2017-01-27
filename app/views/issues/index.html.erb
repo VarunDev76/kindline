@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1 class="page-title">Issues <%= link_to 'Add Issue', new_issue_path, class: "btn btn-primary pull-right", method: :get %></h1>
+</div>
+<div class="page-content">
+	<div class="panel">
+        <div class="panel-body">
+        	<table class="table table-hover dataTable table-striped width-full" data-plugin="dataTable" id="issue_table">
+	            <thead>
+	              <tr>
+	                <th>Name</th>
+					<th>Actions</th>
+					<th>Actions</th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	            	<% @issues.each do |u| %>
+						<tr>
+							<td><%= u.name %></td>
+							<td><%= link_to 'Edit', edit_issue_path(u), method: :get %></td>
+					        <td><%= link_to 'Delete', issue_path(u), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						</tr>
+					<% end %>
+            	</tbody>
+          	</table>
+        </div>
+  	</div>
+</div>
