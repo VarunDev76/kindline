@@ -47,3 +47,4 @@ end
 
 gem 'pry'
 gem 'devise'
+gem 'rails_db_info'

@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   resources :user
   resources :stores
   resources :issues
+
+  namespace :api do
+    post '/user/login' => 'users#login'
+    post '/user/logout' => 'users#logout'
+    get '/user/stores' => 'users#stores'
+  end
+
   root 'home#index'
 
   # Example of regular route:
