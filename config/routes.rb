@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/user/stores' => 'users#stores'
   end
 
-  root 'home#index'
+  root 'stores#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
