@@ -47,6 +47,6 @@ class IssuesController < ApplicationController
     end
 
 	def issue_params
-		params.require(:issue).permit(:name, :address)
+		params.require(:issue).permit(:name, :quantity, :amount)
 	end
 end

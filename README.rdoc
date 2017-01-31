@@ -7,6 +7,17 @@
 3. Get all stores
 	curl -X GET -H "Content-type: application/json" -d '{"authtoken": "token"}' http://0.0.0.0:3000/api/user/stores	
 
+=====================================================================================================================================================================
+
+1. User login
+	curl -X POST -H "Content-type: application/json" -d '{"user":{"email":"admin@admin.com", "password":"12345678"}}' http://kindline.herokuapp.com/api/user/login
+
+2. User logout
+	curl -X POST -H "Content-type: application/json" -d '{"authtoken":"token"}' http://kindline.herokuapp.com/api/user/logout
+
+3. Get all stores
+	curl -X GET -H "Content-type: application/json" -d '{"authtoken": "token"}' http://kindline.herokuapp.com/api/user/stores	
+
 == README
 
 This README would normally document whatever steps are necessary to get the
