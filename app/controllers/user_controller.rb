@@ -51,6 +51,10 @@ class UserController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def report
+    	
+    end
+
 	def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end

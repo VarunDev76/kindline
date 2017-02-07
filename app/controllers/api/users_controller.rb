@@ -62,11 +62,18 @@ class Api::UsersController < Api::BaseController
 			obj.save
 		end
 
-		unless params[:data][:last_issue_picked_id].blank?
-			obj=data.find_or_create_by(issue_id: params[:data][:last_issue_picked_id])
-			obj.issue_id = params[:data][:last_issue_picked_id]
-			obj.pick_qty = obj.pick_qty + params[:data][:last_picked_issue_qty].to_i
-			obj.save
+		issue = Sale.where(store_id: @store.id, issue_id: params[:data][:last_issue_picked_id]).first
+
+		if issue.blank?
+			unless params[:data][:last_issue_picked_id].blank?
+				obj=data.find_or_create_by(issue_id: params[:data][:last_issue_picked_id])
+				obj.issue_id = params[:data][:last_issue_picked_id]
+				obj.pick_qty = obj.pick_qty + params[:data][:last_picked_issue_qty].to_i
+				obj.save
+			end
+		else
+			issue.pick_qty = issue.pick_qty + params[:data][:last_picked_issue_qty].to_i
+			issue.save
 		end
 		
 		if @store.current_issue_id.to_i == params[:data][:current_issue_drop_id].to_i

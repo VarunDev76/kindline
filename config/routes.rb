@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :user
+  resources :user do
+    collection do
+      get 'report'
+    end
+  end
   resources :stores
   resources :issues
 
