@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     post '/user/login' => 'users#login'
     post '/user/logout' => 'users#logout'
     get '/user/stores' => 'users#stores'
+    get '/user/store/:store_id/issues' => 'users#issues'
+    post '/user/store/:store_id/save_issue_qty' => 'users#save_issue_qty'
   end
 
   root 'stores#index'
