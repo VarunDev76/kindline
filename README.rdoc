@@ -11,7 +11,7 @@
 	curl -X GET -H "Content-type: application/json" -d '{"authtoken": "hPt4gAvtjFLUA0qEI9BFOg"}' http://0.0.0.0:3000/api/user/store/1/issues
 
 5. Save issue details for store
-	curl -X POST -H "Content-type: application/json" -d '{"authtoken": "hPt4gAvtjFLUA0qEI9BFOg", "data":{ "current_issue_drop_id":"9","current_issue_drop_name":"102", "current_issue_drop_qty":"8", "last_issue_picked_id":"8", "last_picked_issue_qty": "2", "store_id":"1" }}' http://0.0.0.0:3000/api/user/store/1/save_issue_qty
+	curl -X POST -H "Content-type: application/json" -d '{"authtoken": "hPt4gAvtjFLUA0qEI9BFOg", "data":{ "current_issue_drop_id":"9","current_issue_drop_name":"102", "current_issue_drop_qty":"8", "last_issue_picked_id":"8", "last_picked_issue_qty": "2"}}' http://0.0.0.0:3000/api/user/store/1/save_issue_qty
 
 =====================================================================================================================================================================
 
@@ -26,6 +26,10 @@
 
 4. Get issue details for store
 	curl -X GET -H "Content-type: application/json" -d '{"authtoken": "token"}' http://kindline.herokuapp.com/api/user/store/:store_id/issues
+
+5. Save issue details for store
+	curl -X POST -H "Content-type: application/json" -d '{"authtoken": "hPt4gAvtjFLUA0qEI9BFOg", "data":{ "current_issue_drop_id":"9","current_issue_drop_name":"102", "current_issue_drop_qty":"8", "last_issue_picked_id":"8", "last_picked_issue_qty": "2"}}' http://kindline.herokuapp.com/api/user/store/:store_id/save_issue_qty
+
 
 	https://docs.google.com/document/d/1X-MQDtRF4KLVHEHwXJr1H_r6ISOZ5fl0fyCEXioJDFA/edit
 
