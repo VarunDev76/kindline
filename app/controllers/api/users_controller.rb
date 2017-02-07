@@ -68,12 +68,13 @@ class Api::UsersController < Api::BaseController
 			obj.pick_qty = obj.pick_qty + params[:data][:last_picked_issue_qty].to_i
 			obj.save
 		end
-		@store.current_issue_id = params[:data][:current_issue_drop_id]
-		if @store.current_issue_id == params[:data][:current_issue_drop_id]
+		
+		if @store.current_issue_id.to_i == params[:data][:current_issue_drop_id].to_i
 			@store.drop_qty = @store.drop_qty + params[:data][:current_issue_drop_qty].to_i
 		else
 			@store.drop_qty = params[:data][:current_issue_drop_qty].to_i
 		end
+		@store.current_issue_id = params[:data][:current_issue_drop_id]
 		@store.save
 		render :json => {status: 1}
 	end
