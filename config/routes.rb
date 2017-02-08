@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :user do
     collection do
       get 'report'
+      get 'search'
     end
   end
   resources :stores

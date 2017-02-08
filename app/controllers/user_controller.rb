@@ -45,14 +45,32 @@ class UserController < ApplicationController
 		redirect_to user_index_url, notice: 'User was successfully deleted.'
 	end
 
+	def report
+    	@users = User.all.where(admin: false)
+    	@stores = Store.all
+    end
+
+    def search
+    	@user = User.where(id: params[:user]).first
+    	if @user.blank?
+    		user_ids = User.where(admin: false).map(&:id)
+    	else
+    		user_ids = @user.id
+    	end
+
+    	@store = Store.where(id: params[:store]).first
+    	if @store.blank?
+    		store_ids = Store.all.map(&:id)
+    	else
+    		store_ids = @store.id
+    	end
+    	@data = Sale.where(user_id: user_ids, store_id: store_ids).group_by(&:issue_id)
+    end
+
 	private
 
 	def set_user
       @user = User.find(params[:id])
-    end
-
-    def report
-    	
     end
 
 	def user_params

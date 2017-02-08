@@ -1,0 +1,24 @@
+<h1>Sales by <%=@user.blank? ? "All" : @user.name.humanize%></h1>
+<table class="table">
+	<th>Issue</th>
+	<th>Drop Qty</th>
+	<th>Pick Qty</th>
+	<th>Sale</th>
+	<% @data.each do |a,b| %>
+		<tr>
+			<% s = 0%>
+			<% d = 0%>
+			<% p = 0%>
+
+			<%b.each do |c|%>
+				<% d=d+c.drop_qty.to_i %>
+				<% p=p+c.pick_qty.to_i %>
+				<% s=s+(c.drop_qty.to_i - c.pick_qty.to_i) %>
+			<%end%>
+			<td><%=Issue.where(id: a).first.try(:name)%></td>
+			<td><%=d%></td>
+			<td><%=p%></td>
+			<td><%=s%></td>
+		</tr>
+	<%end%>
+</table>
