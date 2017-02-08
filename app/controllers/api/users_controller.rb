@@ -46,7 +46,7 @@ class Api::UsersController < Api::BaseController
 			 render :json => { 
 			 	store_id: @store.id,
 			 	last_issue_drop_qty: @store.drop_qty,
-			 	current_issue_drop_id: Issue.last.id, 
+			 	current_issue_drop_id: Issue.last.try(:id), 
 			 	current_issue_drop_name: Issue.last.try(:name), 
 			 	last_issue_picked_id: @store.current_issue_id}
 		end
