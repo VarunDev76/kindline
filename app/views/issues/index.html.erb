@@ -7,9 +7,9 @@
         	<table class="table table-hover dataTable table-striped width-full" data-plugin="dataTable" id="issue_table">
 	            <thead>
 	              <tr>
-	                <th>Ref ID</th>
-	                <th>Quantity</th>
-	                <th>Price</th>
+	                <th>ID</th>
+	                <!-- <th>Quantity</th> -->
+	                <!-- <th>Price</th> -->
 					<th>Actions</th>
 					<th>Actions</th>
 	              </tr>
@@ -18,8 +18,8 @@
 	            	<% @issues.each do |u| %>
 						<tr>
 							<td><%= u.name %></td>
-							<td><%= u.quantity %></td>
-							<td><%= u.amount %></td>
+							<!-- <td><%#= u.quantity %></td> -->
+							<!-- <td><%#= u.amount %></td> -->
 							<td><%= link_to 'Edit', edit_issue_path(u), method: :get %></td>
 					        <td><%= link_to 'Delete', issue_path(u), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 						</tr>
