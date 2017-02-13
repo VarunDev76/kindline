@@ -48,7 +48,8 @@ class Api::UsersController < Api::BaseController
 			 	last_issue_drop_qty: @store.drop_qty,
 			 	current_issue_drop_id: Issue.last.try(:id), 
 			 	current_issue_drop_name: Issue.last.try(:name), 
-			 	last_issue_picked_id: @store.current_issue_id}
+			 	last_issue_picked_id: @store.current_issue_id,
+			 	last_issue_picked_name: Issue.where(id: @store.current_issue_id ).first.try(:name)}
 		end
 	end
 
