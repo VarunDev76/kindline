@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get '/user/stores' => 'users#stores'
     get '/user/store/:store_id/issues' => 'users#issues'
     post '/user/store/:store_id/save_issue_qty' => 'users#save_issue_qty'
+    post '/user/store/:store_id/payment' => 'users#payment'
   end
 
   root 'stores#index'

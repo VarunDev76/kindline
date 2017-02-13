@@ -1,5 +1,5 @@
 class Api::UsersController < Api::BaseController
-	before_action :check_auth_token, only: [:logout, :stores, :issues, :save_issue_qty]
+	before_action :check_auth_token, only: [:logout, :stores, :issues, :save_issue_qty, :payment]
 
 	def login
 		user = User.authenticate(params[:user][:email], params[:user][:password])
@@ -85,6 +85,23 @@ class Api::UsersController < Api::BaseController
 		@store.current_issue_id = params[:data][:current_issue_drop_id]
 		@store.save
 		render :json => {status: 1}
+	end
+
+	def payment
+		data = Sale.where(user_id: @user.id, store_id: params[:store_id], issue_id: params[:data][:issue_id] ).first
+		if data.blank?
+			render :json => {status: 0, message: "No record found"}
+		else
+			p=data.build_payment
+			p.store_id = params[:store_id]
+			p.transaction_id = params[:data][:transaction_id]
+			p.amount = params[:data][:amount]
+			if p.save
+				render :json => {status: 1}
+			else
+				render :json => {status: 0}
+			end
+		end
 	end
 
 	private
