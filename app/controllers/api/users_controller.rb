@@ -84,7 +84,12 @@ class Api::UsersController < Api::BaseController
 		end
 		@store.current_issue_id = params[:data][:current_issue_drop_id]
 		@store.save
-		render :json => {status: 1}
+
+		issue = obj if issue.blank?
+		sale_issue_qty = issue.drop_qty.to_i - issue.pick_qty.to_i
+		amount = Issue.find(issue.issue_id).amount.to_f*sale_issue_qty
+		amount = 0 if Issue.all.count < 2
+		render :json => {status: 1, amount: amount}
 	end
 
 	def payment
