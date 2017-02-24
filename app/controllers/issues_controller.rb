@@ -36,6 +36,7 @@ class IssuesController < ApplicationController
 	end
 
 	def destroy
+		Store.where(current_issue_id: @issue.id).update_all(drop_qty: nil, pick_qty:nil, current_issue_id: nil)
 		@issue.destroy
 		redirect_to issues_url, notice: 'Issue was successfully deleted.'
 	end
