@@ -1,10 +1,12 @@
 <div class="page-login layout-full page-dark">
   <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
-  data-animsition-out="fade-out">>
+  data-animsition-out="fade-out">
     <div class="page-content vertical-align-middle" style="margin-top:40px">
       <div class="brand">
         <!-- <img class="brand-img" src="/assets/airsea_logo.png" width="110" height="105"> -->
-        <h2 class="brand-text" style="text-transform: none">Kindline</h2>
+        <h2 class="brand-text" style="text-transform: none">
+          <%= image_submit_tag("Logo.png" , alt:"Kindline"  , style: "height:250px; margin-top:-180px; background-size:cover;")%>
+        </h2>
       </div>
       <p>Sign In</p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

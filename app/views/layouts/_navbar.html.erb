@@ -11,7 +11,9 @@
     </button>
     <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
       <!-- <img class="navbar-brand-logo" src="./assets/images/logo.png" title="Kindline"> -->
-      <span class="navbar-brand-text"> Kindline</span>
+      <span class="navbar-brand-text"> 
+        <%= image_tag("Logo.png" , alt:"Kindline" , class: "navbar-brand-logo")%>
+      </span>
     </div>
     <!-- <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-search"
     data-toggle="collapse">
@@ -66,3 +68,19 @@
     <!-- End Site Navbar Seach -->
   </div>
 </nav>
+<style type="text/css" media="screen">
+  .navbar-container.container-fluid{
+    background: url('/assets/Background.png') 0% 0% no-repeat;
+    background-attachment:fixed; 
+    background-size:cover;
+  }
+  .navbar-brand-logo{
+    height:80px; 
+    margin:-29px 0 0 40px; 
+    background-size:cover;
+  }
+  .navbar-header{
+    background:#0f81e8 !important;
+  }
+  .navbar-default .navbar-toolbar>li>a{color:#282131;}
+</style>
