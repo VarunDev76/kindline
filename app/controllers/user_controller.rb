@@ -3,12 +3,27 @@ class UserController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	# skip_before_filter  :verify_authenticity_token, only: [:submit_quote]
 
+	def authenticate
+	    callback = quickbooks_oauth_callback_url
+	    token = QB_OAUTH_CONSUMER.get_request_token(:oauth_callback => callback)
+	    session[:qb_request_token] = token
+	    redirect_to("https://a''ppcenter.intuit.com/Connect/Begin?oauth_token=#{token.token}") and return
+	end
+
+	def oauth_callback
+		at = session[:qb_request_token].get_access_token(:oauth_verifier => params[:oauth_verifier])
+		token = at.token
+		secret = at.secret
+		realm_id = params['realmId']
+		# store the token, secret & RealmID somewhere for this user, you will need all 3 to work with Quickbooks-Ruby
+	end
+
 	def index
-  		if current_user.admin?
-  			@users = User.all.where(admin: false)
-	  	else
-	  		@user = current_user
-	  	end
+  		# if current_user.admin?
+  			@users = User.all #.where(admin: false)
+	  	# else
+	  		# @user = current_user
+	  	# end
 	end
 
 	def new
@@ -48,6 +63,7 @@ class UserController < ApplicationController
 	def report
     	@users = User.all.where(admin: false)
     	@stores = Store.all
+    	@issues = Issue.all
     end
 
     def search
@@ -64,7 +80,18 @@ class UserController < ApplicationController
     	else
     		store_ids = @store.id
     	end
-    	@data = Sale.where(user_id: user_ids, store_id: store_ids).group_by(&:issue_id)
+
+    	@issue = Issue.where(id: params[:issue]).first
+    	if @issue.blank?
+    		issue_ids = Issue.all.map(&:id)
+    	else
+    		issue_ids = @issue.id
+    	end
+
+    	# binding.pry
+		@result = Sale.where("created_at >= :start_date AND created_at <= :end_date", {start_date: params[:starting_date], end_date: params[:ending_date]})
+		# binding.pry
+    	@data = Sale.where(user_id: user_ids, store_id: store_ids , issue_id: issue_ids , id: @result.ids ).group_by(&:issue_id)
     end
 
 	private

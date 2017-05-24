@@ -16,6 +16,7 @@
 6. Payment for store
 	curl -X POST -H "Content-type: application/json" -d '{"authtoken": "token", "data":{ "issue_id":"2", "transaction_id": "123", "amount": "10" }}' http://0.0.0.0:3000/api/user/store/1/payment
 
+
 =====================================================================================================================================================================
 
 1. User login

@@ -4,6 +4,7 @@
 	<th>Drop Qty</th>
 	<th>Pick Qty</th>
 	<th>Sale</th>
+	<%#binding.pry%>
 	<% @data.each do |a,b| %>
 		<tr>
 			<% s = 0%>
@@ -15,6 +16,7 @@
 				<% p=p+c.pick_qty.to_i %>
 				<% s=s+(c.drop_qty.to_i - c.pick_qty.to_i) %>
 			<%end%>
+
 			<td><%=Issue.where(id: a).first.try(:name)%></td>
 			<td><%=d%></td>
 			<td><%=p%></td>

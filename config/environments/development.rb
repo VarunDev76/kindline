@@ -39,4 +39,14 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  Quickbooks.sandbox_mode = true
+  # QB_KEY = "qyprdX8QgoHPx3g9sJWLssMvLzW6Dv"
+  # QB_SECRET = "zVuEj7ld6WlOW5pyIelQRq4269x7SbWdNAdDP8S4"
+
+  $qb_oauth_consumer = OAuth::Consumer.new("qyprdX8QgoHPx3g9sJWLssMvLzW6Dv", "zVuEj7ld6WlOW5pyIelQRq4269x7SbWdNAdDP8S4", {
+    :site                 => "https://oauth.intuit.com",
+    :request_token_path   => "https://oauth.intuit.com/oauth/v1/get_request_token",
+    :authorize_url        => "https://appcenter.intuit.com/Connect/Begin",
+    :access_token_path    => "https://oauth.intuit.com/oauth/v1/get_access_token"
+  })
 end

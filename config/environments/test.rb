@@ -23,6 +23,7 @@ Rails.application.configure do
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
+  Quickbooks.sandbox_mode = true
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 

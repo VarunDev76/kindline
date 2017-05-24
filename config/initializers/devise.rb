@@ -13,7 +13,16 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  # Quickbooks.sandbox_mode = true
+  # QB_KEY = "qyprdX8QgoHPx3g9sJWLssMvLzW6Dv"
+  # QB_SECRET = "zVuEj7ld6WlOW5pyIelQRq4269x7SbWdNAdDP8S4"
 
+  # $qb_oauth_consumer = OAuth::Consumer.new(QB_KEY, QB_SECRET, {
+  #   :site                 => "https://oauth.intuit.com",
+  #   :request_token_path   => "/oauth/v1/get_request_token",
+  #   :authorize_url        => "https://appcenter.intuit.com/Connect/Begin",
+  #   :access_token_path    => "/oauth/v1/get_access_token"
+  # })
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

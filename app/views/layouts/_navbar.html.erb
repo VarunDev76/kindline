@@ -1,3 +1,9 @@
+<!-- somewhere in your document include the Javascript -->
+<script type="text/javascript" src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js"></script>
+<!-- configure the Intuit object: 'grantUrl' is a URL in your application which kicks off the flow, see below -->
+<script type="text/javascript">
+  intuit.ipp.anywhere.setup( { grantUrl: 'http://appcenter.intuit.com/Playground/OAuth/BeginIAFlow', datasources: { quickbooks : true , payments : false } });
+</script>
 <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided"
@@ -47,6 +53,10 @@
         </li>
         <li class="dropdown">
             <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-avatar dropdown-toggle") %>
+        </li>
+        <li class="navbar-avatar">
+          <!-- this will display a button that the user clicks to start the flow -->
+          <ipp:connectToIntuit></ipp:connectToIntuit>
         </li>
       </ul>
       <!-- End Navbar Toolbar Right -->
