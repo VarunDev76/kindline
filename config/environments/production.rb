@@ -76,4 +76,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { host: 'https://quiet-waters-67128.herokuapp.com' }
+  Quickbooks.sandbox_mode = true
+  # QB_KEY = "qyprdX8QgoHPx3g9sJWLssMvLzW6Dv"
+  # QB_SECRET = "zVuEj7ld6WlOW5pyIelQRq4269x7SbWdNAdDP8S4"
+
+  $qb_oauth_consumer = OAuth::Consumer.new("qyprdgsCxAsTMXrV8rpjfp2H2hgLR3", "0leVqGPwQ7cuzgEhLqGcU0lgbuVeRyJuoH6PTrpF", {
+    :site                 => "https://oauth.intuit.com",
+    :request_token_path   => "https://oauth.intuit.com/oauth/v1/get_request_token",
+    :authorize_url        => "https://appcenter.intuit.com/Connect/Begin",
+    :access_token_path    => "https://oauth.intuit.com/oauth/v1/get_access_token"
+  })
 end
