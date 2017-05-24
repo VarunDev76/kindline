@@ -127,8 +127,6 @@ GEM
       nokogiri
       oauth (= 0.4.7)
       roxml (= 3.3.1)
-    quickbooks-ruby-base (1.6.0)
-      quickbooks-ruby
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -222,7 +220,6 @@ DEPENDENCIES
   pry
   qbo_api
   quickbooks-ruby
-  quickbooks-ruby-base
   rails (= 4.2.4)
   rails_db_info
   sass-rails (~> 5.0)
