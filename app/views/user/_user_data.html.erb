@@ -1,10 +1,13 @@
+
 <h1>Sales by <%=@user.blank? ? "All" : @user.name.humanize%></h1>
+
+
+
 <table class="table">
 	<th>Issue</th>
 	<th>Drop Qty</th>
 	<th>Pick Qty</th>
 	<th>Sale</th>
-	<%#binding.pry%>
 	<% @data.each do |a,b| %>
 		<tr>
 			<% s = 0%>

@@ -64,6 +64,51 @@ class UserController < ApplicationController
     	@users = User.all.where(admin: false)
     	@stores = Store.all
     	@issues = Issue.all
+    	# binding.pry
+    	
+    end
+
+    def excel
+    	# @users = User.all.where(admin: false)
+    	# @sales = Sale.order(:id)
+    	# drop_qty = params[:drop_qty]
+    	# pick_qty = params[:pick_qty]
+    	# sale = params[:sale]
+    	# issue = params[:issue]
+    	# @params = drop_qty + " " + pick_qty + " " + sale + " " + issue
+    	# @params = @params.split(" ")
+    	@user = User.where(id: params[:user]).first
+    	if @user.blank?
+    		user_ids = User.where(admin: false).map(&:id)
+    	else
+    		user_ids = @user.id
+    	end
+
+    	@store = Store.where(id: params[:store]).first
+    	if @store.blank?
+    		store_ids = Store.all.map(&:id)
+    	else
+    		store_ids = @store.id
+    	end
+
+    	@issue = Issue.where(id: params[:issue]).first
+    	if @issue.blank?
+    		issue_ids = Issue.all.map(&:id)
+    	else
+    		issue_ids = @issue.id
+    	end
+
+    	# binding.pry
+		# @result = Sale.where("created_at >= :start_date AND created_at <= :end_date", {start_date: params[:starting_date], end_date: params[:ending_date]})
+    	@data = Sale.where(user_id: user_ids, store_id: store_ids , issue_id: issue_ids)#.group_by(&:issue_id)
+
+    	@products = @data
+    	binding.pry
+		respond_to do |format|
+			format.html
+			format.csv { send_data @products.to_csv }
+			format.xls { send_data @products.to_csv(col_sep: "\t") }
+		end
     end
 
     def search
@@ -90,8 +135,10 @@ class UserController < ApplicationController
 
     	# binding.pry
 		@result = Sale.where("created_at >= :start_date AND created_at <= :end_date", {start_date: params[:starting_date], end_date: params[:ending_date]})
-		# binding.pry
     	@data = Sale.where(user_id: user_ids, store_id: store_ids , issue_id: issue_ids , id: @result.ids ).group_by(&:issue_id)
+		# binding.pry
+		
+
     end
 
 	private

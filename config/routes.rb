@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'report'
       get 'search'
+      get 'excel'
     end
   end
   resources :stores
